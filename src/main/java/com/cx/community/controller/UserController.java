@@ -1,5 +1,6 @@
-package com.cx.community.controller.interceptor;
+package com.cx.community.controller;
 
+import com.cx.community.annotation.LoginRequired;
 import com.cx.community.service.UserService;
 import com.cx.community.util.CommunityUtil;
 import com.cx.community.util.HostHolder;
@@ -43,11 +44,13 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
     public String getSettingPage() {
         return "/site/setting";
     }
 
+    @LoginRequired
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public String uploadHeader(MultipartFile headerImage, Model model) {
         if (headerImage == null) {
