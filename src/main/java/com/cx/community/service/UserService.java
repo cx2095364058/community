@@ -1,12 +1,12 @@
 package com.cx.community.service;
 
-import com.cx.community.util.CommunityConstant;
-import com.cx.community.util.CommunityUtil;
-import com.cx.community.util.MailClient;
 import com.cx.community.dao.LoginTicketMapper;
 import com.cx.community.dao.UserMapper;
 import com.cx.community.entity.LoginTicket;
 import com.cx.community.entity.User;
+import com.cx.community.util.CommunityConstant;
+import com.cx.community.util.CommunityUtil;
+import com.cx.community.util.MailClient;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -167,6 +167,10 @@ public class UserService implements CommunityConstant {
 
     public int updateHeader(int userId, String headerUrl) {
         return userMapper.updateHeader(userId, headerUrl);
+    }
+
+    public User findUserByName(String username) {
+        return userMapper.selectByName(username);
     }
 
 }
